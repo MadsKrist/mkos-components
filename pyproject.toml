@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mkos-components"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+keywords = []
+authors = [{ name = "Mads Kristensen", email = "madskris@proton.me" }]
+classifiers = [
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "dash-extensions",
+  "dash-mantine-components",
+  "dash-iconify",
+  "dash[testing]",
+]
+
+[project.urls]
+Documentation = "https://github.com/MadsKrist3. MadsKrist/mkos-components#readme"
+Issues = "https://github.com/MadsKrist. MadsKrist/mkos-components/issues"
+Source = "https://github.com/MadsKrist. MadsKrist/mkos-components"
+
+[tool.hatch.version]
+path = "src/mkos_components/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = ["mypy>=1.0.0"]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/mkos_components tests}"
+
+[tool.coverage.run]
+source_pkgs = ["mkos_components", "tests"]
+branch = true
+parallel = true
+omit = ["src/mkos_components/__about__.py"]
+
+[tool.coverage.paths]
+mkos_components = [
+  "src/mkos_components",
+  "*/mkos-components/src/mkos_components",
+]
+tests = ["tests", "*/mkos-components/tests"]
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
