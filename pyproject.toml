@@ -21,6 +21,7 @@ dependencies = [
   "dash-mantine-components",
   "dash-iconify",
   "dash[testing]",
+  "selenium",
 ]
 
 [project.urls]
